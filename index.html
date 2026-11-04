@@ -1388,13 +1388,133 @@
           padding-bottom: 56px;
         }
       }
+    
+      /* ヘッダー右：営業スケジュールボタン＋三本線ナビ */
+      .site-header .brand {
+        font-size: min(4.8vw, 1.35rem);
+      }
+      .head-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .site-header .head-btn {
+        font-size: min(3.5vw, 0.95rem);
+        padding: 9px 12px;
+      }
+      .nav-toggle {
+        width: 42px;
+        height: 42px;
+        flex: none;
+        border: 3px solid var(--brown);
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        padding: 0;
+      }
+      .nav-toggle .bars {
+        position: relative;
+        width: 18px;
+        height: 14px;
+        display: block;
+      }
+      .nav-toggle .bars i {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2.5px;
+        border-radius: 2px;
+        background: var(--brown);
+        transition: transform 0.2s, opacity 0.2s, top 0.2s;
+      }
+      .nav-toggle .bars i:nth-child(1) { top: 0; }
+      .nav-toggle .bars i:nth-child(2) { top: 5.75px; }
+      .nav-toggle .bars i:nth-child(3) { top: 11.5px; }
+      .nav-toggle[aria-expanded="true"] .bars i:nth-child(1) { top: 5.75px; transform: rotate(45deg); }
+      .nav-toggle[aria-expanded="true"] .bars i:nth-child(2) { opacity: 0; }
+      .nav-toggle[aria-expanded="true"] .bars i:nth-child(3) { top: 5.75px; transform: rotate(-45deg); }
+      .site-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        border-bottom: 2px solid var(--line);
+        box-shadow: 0 10px 18px rgba(91, 70, 54, 0.16);
+        padding: 6px 16px 10px;
+        animation: fade 0.18s;
+      }
+      .site-nav[hidden] {
+        display: none;
+      }
+      .site-nav a {
+        display: block;
+        padding: 14px 6px;
+        color: var(--brown);
+        font-weight: 700;
+        font-size: 1.05rem;
+        text-decoration: none;
+        border-bottom: 2px dotted var(--line);
+      }
+      .site-nav a:last-child {
+        border-bottom: none;
+      }
+      .site-nav a:active {
+        background: var(--butter-soft);
+      }
+      @media (min-width: 700px) {
+        .site-header .head-btn {
+          font-size: 0.95rem;
+          padding: 9px 16px;
+        }
+        .site-nav {
+          left: auto;
+          right: 24px;
+          width: 320px;
+          border: 2px solid var(--line);
+          border-radius: 0 0 18px 18px;
+        }
+      }
+      /* ファーストビュー：下の白いぼかしを弱めて、写真を画面の下まで見せる */
+      .hero-photo::after {
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 253, 247, 0) 48%,
+          rgba(255, 253, 247, 0.8) 68%,
+          rgba(255, 253, 247, 0.72) 84%,
+          rgba(255, 253, 247, 0.12) 100%
+        );
+      }
+      .hero .small,
+      .hero .catch {
+        text-shadow: 0 0 6px #fffdf7, 0 0 12px #fffdf7;
+      }
+      .hero .small {
+        font-size: min(4.4vw, 1.2rem);
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
     <!-- ヘッダー：左端に店名、右端に営業スケジュールのボタン -->
     <header class="site-header">
       <a class="brand" href="#top">ボングーうみわん</a>
-      <a class="head-btn" href="#schedule">営業スケジュール</a>
+      <div class="head-right">
+        <a class="head-btn" href="#schedule">営業スケジュール</a>
+        <!-- 三本線のナビゲーション（押すとページ内リンクが開きます） -->
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+          <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+      <nav class="site-nav" id="site-nav" aria-label="ページ内リンク" hidden>
+        <a href="#top">トップ</a>
+        <a href="#concept">うみわんのこだわり</a>
+        <a href="#menu">メニュー</a>
+        <a href="#schedule">営業スケジュール</a>
+        <a href="#info">お店の情報（住所・電話）</a>
+      </nav>
     </header>
 
     <!-- ① ファーストビュー：店名と看板パン -->
@@ -1505,7 +1625,7 @@
           </p>
         </div>
 
-        <div class="info">
+        <div class="info" id="info">
           <dl>
             <dt>店名</dt>
             <dd>ボングーうみわん</dd>
@@ -1931,5 +2051,29 @@
         });
       })();
     </script>
-  </body>
+      <script>
+      (function () {
+        var btn = document.getElementById("nav-toggle");
+        var nav = document.getElementById("site-nav");
+        function setOpen(open) {
+          nav.hidden = !open;
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+          btn.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+        }
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setOpen(nav.hidden);
+        });
+        nav.addEventListener("click", function (e) {
+          if (e.target.closest("a")) { setOpen(false); }
+        });
+        document.addEventListener("click", function (e) {
+          if (!nav.hidden && !nav.contains(e.target)) { setOpen(false); }
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !nav.hidden) { setOpen(false); btn.focus(); }
+        });
+      })();
+    </script>
+</body>
 </html>
