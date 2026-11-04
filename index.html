@@ -8,21 +8,27 @@
       name="description"
       content="名護市大東のパン屋「ボングーうみわん」。8:00〜20:00営業、日曜定休。看板メニュー「クリームランド」ほか、パンとスイーツを毎日。"
     />
-    <!-- SNSシェア用（OGP）。公開URLが決まったら、下の https://example.vercel.app を実際のアドレスに書き換えてください -->
+    <!-- SNSシェア用（OGP）。公開URLが決まったら、下の https://example.vercel.app を実際のアドレスに書き換えてください→ https://bongu-yamamiya.vercel.app/ -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ボングーうみわん" />
     <meta property="og:title" content="ボングーうみわん" />
     <meta property="og:description" content="名護市大東の街のパン屋さん" />
-    <meta property="og:url" content="https://example.vercel.app/" />
-    <meta property="og:image" content="https://example.vercel.app/ogp.jpg" />
+    <meta property="og:url" content="https://bongu-yamamiya.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://bongu-yamamiya.vercel.app/ogp.jpg"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="ボングーうみわんの店先" />
     <meta property="og:locale" content="ja_JP" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap"
+      rel="stylesheet"
+    />
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1301,7 +1307,7 @@
         color: #b44a2b;
         opacity: 0.45;
       }
-    
+
       /* ファーストビュー：写真を画面いっぱいに（ヘッダーの下から画面の下まで）。文字は下の白いぼかしの上に置く */
       .hero-photo {
         --hh: calc(100vh - 64px);
@@ -1349,7 +1355,7 @@
         white-space: nowrap;
         line-height: 1.55;
       }
-    
+
       /* 画面右下の丸いアイコンボタン（帯はなし）。上＝カレンダー、下＝電話 */
       .dock {
         left: auto;
@@ -1388,7 +1394,7 @@
           padding-bottom: 56px;
         }
       }
-    
+
       /* ヘッダー右：営業スケジュールボタン＋三本線ナビ */
       .site-header .brand {
         font-size: min(4.8vw, 1.35rem);
@@ -1427,14 +1433,31 @@
         height: 2.5px;
         border-radius: 2px;
         background: var(--brown);
-        transition: transform 0.2s, opacity 0.2s, top 0.2s;
+        transition:
+          transform 0.2s,
+          opacity 0.2s,
+          top 0.2s;
       }
-      .nav-toggle .bars i:nth-child(1) { top: 0; }
-      .nav-toggle .bars i:nth-child(2) { top: 5.75px; }
-      .nav-toggle .bars i:nth-child(3) { top: 11.5px; }
-      .nav-toggle[aria-expanded="true"] .bars i:nth-child(1) { top: 5.75px; transform: rotate(45deg); }
-      .nav-toggle[aria-expanded="true"] .bars i:nth-child(2) { opacity: 0; }
-      .nav-toggle[aria-expanded="true"] .bars i:nth-child(3) { top: 5.75px; transform: rotate(-45deg); }
+      .nav-toggle .bars i:nth-child(1) {
+        top: 0;
+      }
+      .nav-toggle .bars i:nth-child(2) {
+        top: 5.75px;
+      }
+      .nav-toggle .bars i:nth-child(3) {
+        top: 11.5px;
+      }
+      .nav-toggle[aria-expanded="true"] .bars i:nth-child(1) {
+        top: 5.75px;
+        transform: rotate(45deg);
+      }
+      .nav-toggle[aria-expanded="true"] .bars i:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle[aria-expanded="true"] .bars i:nth-child(3) {
+        top: 5.75px;
+        transform: rotate(-45deg);
+      }
       .site-nav {
         position: absolute;
         top: 100%;
@@ -1489,13 +1512,15 @@
       }
       .hero .small,
       .hero .catch {
-        text-shadow: 0 0 6px #fffdf7, 0 0 12px #fffdf7;
+        text-shadow:
+          0 0 6px #fffdf7,
+          0 0 12px #fffdf7;
       }
       .hero .small {
         font-size: min(4.4vw, 1.2rem);
         white-space: nowrap;
       }
-    
+
       /* ファーストビューの文字を少し下げる（右下の電話ボタンだけ避ける） */
       .hero-photo .wrap {
         padding-bottom: 92px;
@@ -1527,6 +1552,21 @@
       footer {
         padding: 48px 20px 40px;
       }
+
+      /* ヘッダーの中身の横幅は最大1200px（背景と下線は画面いっぱいのまま） */
+      .site-header {
+        padding-left: max(16px, calc((100% - 1200px) / 2));
+        padding-right: max(16px, calc((100% - 1200px) / 2));
+      }
+      @media (min-width: 700px) {
+        .site-header {
+          padding-left: max(32px, calc((100% - 1200px) / 2));
+          padding-right: max(32px, calc((100% - 1200px) / 2));
+        }
+        .site-nav {
+          right: max(32px, calc((100% - 1200px) / 2));
+        }
+      }
     </style>
   </head>
   <body>
@@ -1536,7 +1576,14 @@
       <div class="head-right">
         <a class="head-btn" href="#schedule">営業スケジュール</a>
         <!-- 三本線のナビゲーション（押すとページ内リンクが開きます） -->
-        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+        <button
+          type="button"
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="メニューを開く"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
           <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
         </button>
       </div>
@@ -1716,10 +1763,26 @@
 
     <!-- 画面右下の丸い電話ボタン（スマホのみ） -->
     <nav class="dock" aria-label="かんたん操作">
-      
-      <a class="d2" href="tel:0980470000" aria-label="電話をかける 0980-47-0000">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      <a
+        class="d2"
+        href="tel:0980470000"
+        aria-label="電話をかける 0980-47-0000"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="28"
+          height="28"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+          ></path>
         </svg>
       </a>
     </nav>
@@ -2073,29 +2136,39 @@
         });
       })();
     </script>
-      <script>
+    <script>
       (function () {
         var btn = document.getElementById("nav-toggle");
         var nav = document.getElementById("site-nav");
         function setOpen(open) {
           nav.hidden = !open;
           btn.setAttribute("aria-expanded", open ? "true" : "false");
-          btn.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+          btn.setAttribute(
+            "aria-label",
+            open ? "メニューを閉じる" : "メニューを開く",
+          );
         }
         btn.addEventListener("click", function (e) {
           e.stopPropagation();
           setOpen(nav.hidden);
         });
         nav.addEventListener("click", function (e) {
-          if (e.target.closest("a")) { setOpen(false); }
+          if (e.target.closest("a")) {
+            setOpen(false);
+          }
         });
         document.addEventListener("click", function (e) {
-          if (!nav.hidden && !nav.contains(e.target)) { setOpen(false); }
+          if (!nav.hidden && !nav.contains(e.target)) {
+            setOpen(false);
+          }
         });
         document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape" && !nav.hidden) { setOpen(false); btn.focus(); }
+          if (e.key === "Escape" && !nav.hidden) {
+            setOpen(false);
+            btn.focus();
+          }
         });
       })();
     </script>
-</body>
+  </body>
 </html>
