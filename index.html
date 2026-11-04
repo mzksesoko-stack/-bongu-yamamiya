@@ -1495,6 +1495,38 @@
         font-size: min(4.4vw, 1.2rem);
         white-space: nowrap;
       }
+    
+      /* ファーストビューの文字を少し下げる（右下の電話ボタンだけ避ける） */
+      .hero-photo .wrap {
+        padding-bottom: 92px;
+      }
+      @media (min-width: 600px) {
+        .hero-photo .wrap {
+          padding-bottom: 56px;
+        }
+      }
+      /* 各セクションの上下の余白を広げる */
+      section {
+        padding: 76px 0;
+      }
+      .lead {
+        margin: 16px 0 38px;
+      }
+      .signature {
+        margin-top: 52px;
+      }
+      .hero {
+        padding-bottom: 28px;
+      }
+      .cat {
+        margin-top: 44px;
+      }
+      .info {
+        margin-top: 38px;
+      }
+      footer {
+        padding: 48px 20px 40px;
+      }
     </style>
   </head>
   <body>
@@ -1682,19 +1714,9 @@
       </div>
     </div>
 
-    <!-- 画面右下の丸いボタン（スマホのみ）：上＝営業スケジュール（カレンダー）、下＝電話 -->
+    <!-- 画面右下の丸い電話ボタン（スマホのみ） -->
     <nav class="dock" aria-label="かんたん操作">
-      <a class="d1" href="#schedule" aria-label="営業スケジュールを見る">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-          <rect x="3" y="4.5" width="18" height="16" rx="3"></rect>
-          <path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path>
-          <circle cx="8.5" cy="14" r="1" fill="currentColor" stroke="none"></circle>
-          <circle cx="12" cy="14" r="1" fill="currentColor" stroke="none"></circle>
-          <circle cx="15.5" cy="14" r="1" fill="currentColor" stroke="none"></circle>
-          <circle cx="8.5" cy="17.2" r="1" fill="currentColor" stroke="none"></circle>
-          <circle cx="12" cy="17.2" r="1" fill="currentColor" stroke="none"></circle>
-        </svg>
-      </a>
+      
       <a class="d2" href="tel:0980470000" aria-label="電話をかける 0980-47-0000">
         <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
